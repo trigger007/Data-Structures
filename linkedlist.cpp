@@ -27,11 +27,22 @@ int display(node *head){
     cout<<temp->data<<endl;
 }
 int insert(node *head){
-    node *temp, *temp1;
+    node *temp, *temp1, *newnode;
     int pos;
     cout<< "enter the position you want to insert a new number:";
     cin>>pos;
+    temp=head;
     int i=0;
+    while(i<pos-2){
+        temp=temp->next;
+        i=i+1;
+    }
+    newnode=createnode();
+    temp1=temp->next;
+    temp->next=newnode;
+    newnode->next=temp1;
+
+
     
 }
 int main(){
@@ -51,6 +62,7 @@ int main(){
             temp=newnode;
         }
     }
+    insert(head);
     display(head);
 
 }
