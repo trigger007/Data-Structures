@@ -17,7 +17,7 @@ node *createnode(){
     newnode->next=NULL;
     return newnode;
 }
-int display(node *head){
+void display(node *head){
     node *temp;
     temp=head;
     while (temp->next!=NULL){
@@ -26,24 +26,58 @@ int display(node *head){
     }
     cout<<temp->data<<endl;
 }
-int insert(node *head){
+node *insertpos(node *head){
     node *temp, *temp1, *newnode;
     int pos;
     cout<< "enter the position you want to insert a new number:";
     cin>>pos;
     temp=head;
     int i=0;
-    while(i<pos-2){
+    if (pos==0 || pos==1){
+        newnode=createnode();
+        newnode->next=head;
+        head=newnode;
+    }
+    else{
+        while(i<pos-2){
+            temp=temp->next;
+            i=i+1;
+        }
+        newnode=createnode();
+        temp1=temp->next;
+        temp->next=newnode;
+        newnode->next=temp1;
+    }
+    return head;
+}
+node *insertnum(node *head){
+    node *temp, *temp1, *newnode;
+    int num;
+    cout<<"enter the number after which you wish to add the new number:";
+    cin>>num;
+    temp=head;
+    while(temp->data!=num){
         temp=temp->next;
-        i=i+1;
     }
     newnode=createnode();
     temp1=temp->next;
     temp->next=newnode;
     newnode->next=temp1;
-
-
-    
+    return head;
+}
+node *insert(node *head){
+    cout<<"press 1. to enter number by position."<<endl;
+    cout<<"press 2. to add number after another number in the list."<<endl;
+    cout<<"enter your option:";
+    int dec;
+    cin>>dec;
+    if (dec==1){
+        head=insertpos(head);
+    }
+    else if (dec==2){
+        head=insertnum(head);
+    }
+    return head;
 }
 int main(){
     node *head=NULL, *newnode=NULL, *temp=NULL;
@@ -62,7 +96,7 @@ int main(){
             temp=newnode;
         }
     }
-    insert(head);
+    head=insert(head);
     display(head);
 
 }
