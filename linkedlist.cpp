@@ -79,6 +79,66 @@ node *insert(node *head){
     }
     return head;
 }
+
+node *delnum(node *head){
+    node *temp, *temp1;
+    int num;
+    cout<<"enter the number you want to delete:";
+    cin>>num;
+    temp=head;
+    while(temp->data!=num){
+        temp1=temp;
+        temp=temp->next;
+    }
+    temp1->next=temp->next;
+    free(temp);
+    return head;
+}
+
+node *delpos(node *head){
+    node *temp, *temp1;
+    int pos;
+    cout<<"enter the position you want to delete:";
+    cin>>pos;
+    if (pos==0){
+        pos=1;
+    }
+    temp=head;
+    int i;
+    for (i=0;i<pos-1;i++){
+        temp1=temp;
+        temp=temp->next;
+    }
+    temp1->next=temp->next;
+    free(temp);
+    return head;
+}
+
+node *del(node *head){
+    cout<<"press 1. to delete number by position."<<endl;
+    cout<<"press 2. to delete a number by value in the list."<<endl;
+    cout<<"enter your option:";
+    int dec;
+    cin>>dec;
+    if (dec==1){
+        head=delpos(head);
+    }
+    else if (dec==2){
+        head=delnum(head);
+    }
+    return head;
+}
+
+void length(node *head){
+    node *temp;
+    int i=1;
+    temp=head;
+    while(temp->next!=NULL){
+        temp=temp->next;
+        i=i+1;
+    }
+    cout<<"The length of the linked list is: "<<i<<endl;
+}
 int main(){
     node *head=NULL, *newnode=NULL, *temp=NULL;
     int n;
@@ -96,7 +156,9 @@ int main(){
             temp=newnode;
         }
     }
-    head=insert(head);
+    /*head=insert(head);
+    head=del(head);*/
+    length(head);
     display(head);
 
 }
