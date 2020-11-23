@@ -139,6 +139,22 @@ void length(node *head){
     }
     cout<<"The length of the linked list is: "<<i<<endl;
 }
+
+node *updatenum(node *head){
+    node *temp;
+    cout<<"enter the number you want to update:";
+    int num;
+    cin>>num;
+    cout<<"enter the new number you want:";
+    int nnum;
+    cin>>nnum;
+    temp=head;
+    while(temp->data!=num){
+        temp=temp->next;
+    }
+    temp->data=nnum;
+    return head;
+}
 int main(){
     node *head=NULL, *newnode=NULL, *temp=NULL;
     int n;
@@ -158,7 +174,8 @@ int main(){
     }
     /*head=insert(head);
     head=del(head);*/
+    head=updatenum(head);
     length(head);
     display(head);
-
+    return 0;
 }
