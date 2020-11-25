@@ -157,7 +157,34 @@ node *updatenum(node *head){
 }
 
 node *updatepos(node *head){
-    
+    node *temp;
+    cout<<"enter the position you want to update:";
+    int pos;
+    cin>>pos;
+    cout<<"enter the new number you want:";
+    int num,i;
+    temp=head;
+    cin>>num;
+    for (i=0;i<pos-1;i=i+1){
+        temp=temp->next;
+    }
+    temp->data=num;
+    return head;
+}
+
+node *update(node *head){
+    cout<<"press 1. to update a number by position."<<endl;
+    cout<<"press 2. to update a number by value in the list."<<endl;
+    cout<<"enter your option:";
+    int dec;
+    cin>>dec;
+    if (dec==1){
+        head=updatepos(head);
+    }
+    else if (dec==2){
+        head=updatenum(head);
+    }
+    return head;
 }
 int main(){
     node *head=NULL, *newnode=NULL, *temp=NULL;
@@ -178,7 +205,7 @@ int main(){
     }
     /*head=insert(head);
     head=del(head);*/
-    head=updatenum(head);
+    head=update(head);
     length(head);
     display(head);
     return 0;
