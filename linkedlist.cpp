@@ -155,6 +155,10 @@ node *updatenum(node *head){
     temp->data=nnum;
     return head;
 }
+
+node *updatepos(node *head){
+    
+}
 int main(){
     node *head=NULL, *newnode=NULL, *temp=NULL;
     int n;
