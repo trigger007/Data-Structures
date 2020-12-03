@@ -186,6 +186,10 @@ node *update(node *head){
     }
     return head;
 }
+
+node *sort(node *head){
+    
+}
 int main(){
     node *head=NULL, *newnode=NULL, *temp=NULL;
     int n;
