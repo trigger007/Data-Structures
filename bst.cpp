@@ -96,9 +96,51 @@ node *addelement(node *root){
     }
     return root;
 }
+
+void findelement(node *root,int num,node *prev=NULL){
+    node *temp, *temp1;
+    temp=root;
+    cout<<root->data<<endl;
+    if (temp==NULL){
+        cout<<"number not found"<<endl;
+        return;
+        
+    }
+    else{
+        if (num==temp->data){
+            cout<<"number found"<<endl<<"parent node:"<<prev->data<<endl;
+            if (temp->left!=NULL){
+                cout<<"left child is:"<<temp->left->data<<endl;
+            }
+            if (temp->right!=NULL){
+                cout<<"right child is:"<<temp->right->data<<endl;
+            }
+        }
+        else if(num<temp->data){
+            prev=temp;
+            findelement(temp->left,num,prev);
+        }
+        else if (num>=temp->data){
+            prev=temp;
+            findelement(temp->right,num,prev);
+        }
+    }
+    
+}
+
+void innum(node *root){
+    cout<<"enter the number you want to find:";
+    int n,i;
+    cin>>n;
+    findelement(root,n);
+
+}
+
+
 int main(){
     node *root=NULL, *newnode, *temp;
     root=createnode();
     root=addelement(root);
     display(root);
+    innum(root);
 }
