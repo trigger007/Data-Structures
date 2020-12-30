@@ -18,8 +18,14 @@ node *createnode(){
     return newnode;
 }
 node *push(node *top,node *newnode){
-    newnode->next=top;
+    node *temp;
+    temp=top;
+    //cout<<temp->data<<" "<<temp->next<<endl;
+    newnode->next=temp;
+    //free(top);
     top=newnode;
+    //cout<<top->data<<" "<<top->next<<endl;
+    //cout<<top->data;
     return top;
 }
 node *addnum(node *top){
@@ -30,23 +36,23 @@ node *addnum(node *top){
     for (i=0;i<n;i++){
         newnode=createnode();
         top=push(top,newnode);
-        free(newnode);
+        //free(newnode);
     }
+    //cout<<top->data;
     return top;
 }
-void display(node* top){
+void display(node *top){
     node *temp;
     temp=top;
-    while(temp->next!=NULL){
-        cout<<temp->data;
+    while(temp!=NULL){
+        cout<<temp->data<</*" "<<temp->next<<*/endl;
         temp=temp->next;
     }
 }
 int main(){
     node *top;
-    int t;
-    cout<<"Enter the first element in the stack:";
-    cin>>t;
+    top=createnode();
+    display(top);
     top=addnum(top);
     display(top);
 }
