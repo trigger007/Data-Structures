@@ -16,9 +16,42 @@ node * createnode(){
     newnode->next=NULL;
     return newnode;
 }
-void main(){
+node *enqueue(node *tail){
+    node *newnode;
+    newnode=createnode();
+    tail->next=newnode;
+    tail=newnode;
+    return tail;
+}
+node *addnum(node *top,node *tail){
+    int n,i;
+    
+    cout<<"enter the number of numbers you want to enqueue:";
+    cin>>n;
+    for(i=0;i<n;i++){
+        tail=enqueue(tail);
+    }
+    return tail;
+}
+
+void display(node *top){
+    node *temp;
+    temp=top;
+    if (top==NULL){
+        cout<<"The stack is empty"<<endl;
+    }
+    while(temp!=NULL){
+        cout<<temp->data<</*" "<<temp->next<<*/endl;
+        temp=temp->next;
+    }
+}
+
+int main(){
     node *top;
     node *tail;
     top=createnode();
-    if 
+    tail=top;
+    tail=addnum(top,tail);
+    tail=enqueue(tail);
+    display(top);
 }
