@@ -15,6 +15,9 @@ in progress
 ### Stack (stack.cpp) using Linked List
 * working and easy to understand
 
+### Queue(queue.cpp) using Linked List
+* working and easy to understand
+
 
 ###### Adding a Binary tree file soon
 
