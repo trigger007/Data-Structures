@@ -16,6 +16,33 @@ node * createnode(){
     newnode->next=NULL;
     return newnode;
 }
+node *dequeue(node* top){
+    node *temp;
+    if (top->next->next==NULL){
+        cout<<"Warning! Only one element left in the queue"<<endl;
+        cout<<"element dequeued is:"<<top->data<<endl;
+        temp=top->next;
+        free(top);
+        top=temp;
+
+    }
+    else if (top->next!=NULL)
+    {
+        cout<<"element dequeued is:"<<top->data<<endl;
+        temp=top->next;
+        free(top);
+        top=temp;
+    }
+    else if(top==NULL){
+        cout<<"the queue is already empty"<<endl;
+    }
+    else{
+        cout<<"element dequeued is:"<<top->data<<endl;
+        top=NULL;
+        cout<<"The queue is empty now"<<endl;
+    }
+    return top;
+}
 node *enqueue(node *tail){
     node *newnode;
     newnode=createnode();
@@ -23,7 +50,7 @@ node *enqueue(node *tail){
     tail=newnode;
     return tail;
 }
-node *addnum(node *top,node *tail){
+node *addnum(node *tail){
     int n,i;
     
     cout<<"enter the number of numbers you want to enqueue:";
@@ -38,7 +65,7 @@ void display(node *top){
     node *temp;
     temp=top;
     if (top==NULL){
-        cout<<"The stack is empty"<<endl;
+        cout<<"The queue is empty"<<endl;
     }
     while(temp!=NULL){
         cout<<temp->data<</*" "<<temp->next<<*/endl;
@@ -51,7 +78,29 @@ int main(){
     node *tail;
     top=createnode();
     tail=top;
-    tail=addnum(top,tail);
-    tail=enqueue(tail);
-    display(top);
+    int s=1;
+    while(s){
+        cout<<"enter 1. to enqueue()."<<endl;
+        cout<<"enter 2. to dequeue()."<<endl;
+        cout<<"enter 3. to enqueue more than one element."<<endl;
+        cout<<"enter 4. to display stack."<<endl;
+        cout<<"enter your option:";
+        cin>>s;
+        if (s==1){
+            tail=enqueue(tail);
+        }
+        else if(s==2){
+            top=dequeue(top);
+        }
+        else if(s==3){
+            tail=addnum(tail);
+        }
+        else if(s==4){
+            display(top);
+        }
+        else{
+            break;
+        }
+    }
+    
 }

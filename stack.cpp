@@ -78,7 +78,7 @@ node *pop(node *top){
 int main(){
     node *top;
     top=createnode();
-    int s;
+    int s=1;
     while(s){
         cout<<"enter 1. to push()."<<endl;
         cout<<"enter 2. to pop()."<<endl;
