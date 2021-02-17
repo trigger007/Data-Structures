@@ -1,25 +1,21 @@
-class Stack:
-    def __init__(self,top):
-        self.top=top
-        self.val=[self.top]
-    def push(self,num):
-        l=[]
-        l.append(num)
-        self.val=l+self.val
-        self.top=self.val[0]
-    def pop(self):
-        self.val.remove(self.val[0])
+class Queue:
+    def __init__(self,n):
+        self.val=[n]
+        self.top=n
+        self.tail=n
+    def enqueue(self,num):
+        self.val.append(num)
+        self.tail=self.val[-1]
+    def dequeue(self):
+        k=self.val[0]
+        self.val.remove(k)
         self.top=self.val[0]
     def display(self):
         for i in range(len(self.val)):
             print(self.val[i])
-a=Stack(5)
+a=Queue(4)
+a.enqueue(8)
+a.enqueue(1)
 a.display()
-a.push(20)
-a.push(70)
+a.dequeue()
 a.display()
-a.pop()
-a.display()
-
-
-    
