@@ -17,7 +17,16 @@ class node:
         while temp.next!=None:
             temp=temp.next
         temp.next=newnode
-        self.display(head)
+        #self.display(head)
+    def addval(self,head):
+        val=int(input("enter the number after which you want to insert the new number:"))
+        v=int(input("enter the number you want to add:"))
+        newnode=self.createnode(v)
+        temp=head
+        while temp.val!=val:
+            temp=temp.next
+        newnode.next=temp.next
+        temp.next=newnode
     def delpos(self,head,pos):
         temp=head
         i=0;
@@ -56,14 +65,17 @@ class node:
         print(temp.val,"->",end =" ")
         while temp.next!=None:
             temp=temp.next
-            print(temp.val,"->",end =" ")
+            if temp.next!=None:
+                print(temp.val,"->",end =" ")
+            else:
+                print(temp.val,end =" ")
     
             
 head=node(5)
-
 n=int(input("enter number of elements to add:"))
 for i in range(n):
     head.addnum(head)
+head.addval(head)
 f=int(input("enter the number to be deleted:"))
 head=head.delval(head,f)
 head.display(head)
