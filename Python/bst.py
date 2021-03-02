@@ -1,3 +1,8 @@
+class node:
+    def __init__(self,val):
+        self.data=val
+        self.right=None
+        self.left=None
 class bst:
     def __init__(self):
         self.root=None
@@ -8,13 +13,20 @@ class bst:
 
     def insert(self,val):
         temp=self.root
-        while temp!=None:
+        ch=0
+        newnode=self.createnode(val)
+        while ch!=1:
             if val>=temp.data:
+                if temp.right==None:
+                    temp.right=newnode
+                    ch=1
                 temp=temp.right
             elif val<temp.data:
+                if temp.left==None:
+                    temp.left=newnode
+                    ch=1
                 temp=temp.left
-        newnode=self.createnode(val)
-        temp=newnode
+        
     
     def inorder(self,temp):
         if temp:
@@ -43,11 +55,7 @@ class bst:
             self.preorder(temp)
         elif n==3:
             self.postorder(temp)
-class node:
-    def __init__(self,val):
-        self.data=val
-        self.right=None
-        self.left=None
+
     
 
         
@@ -59,5 +67,6 @@ for i in range(n):
     val=int(input("enter:"))
     bst.insert(val)
 bst.display()
+
 
     
