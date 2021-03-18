@@ -30,11 +30,13 @@ class bst:
     def delete(self,val):
         temp=self.root
         tt=None
+        str=""
         while temp.data!=val:
             print("chh:",temp.data)
             if temp.data<val:
                 if temp.right!=None:
                     tt=temp
+                    str="right"
                     temp=temp.right
                 else:
                     print("element not found")
@@ -42,6 +44,7 @@ class bst:
             elif temp.data>=val:
                 if temp.left!=None:
                     tt=temp
+                    str="left"
                     temp=temp.left
                 else:
                     print("element not found")
@@ -49,16 +52,27 @@ class bst:
         temp2=temp
         newnode=temp
         tt1=None
+        print(tt.data,temp.data,str)
         if temp2.right==None and temp2.left==None:
             del(temp2)
+            if str=="right":
+                tt.right=None
+            else:
+                tt.left=None
             print("element deleted")
         elif temp2.right!=None or temp2.left!=None:
             if temp2.right==None:
-                tt.left=temp2.left
+                if str=="right":
+                    tt.right=temp2.left
+                else:
+                    tt.left=temp2.left
                 del(temp2)
                 print("element deleted")
             elif temp2.left==None:
-                tt.right=temp2.right
+                if str=="right":
+                    tt.right=temp2.right
+                else:
+                    tt.left=temp2.right
                 del(temp2)
         elif temp2.right!=None and temp2.left!=None:
             newnode=temp2.right
@@ -69,7 +83,14 @@ class bst:
             newnode.right=temp2.right
             newnode.left=temp2.left
             tt1.left=None
-            del(temp2)    
+            del(temp2)   
+
+    def dele(self,val):
+        print("//2nd attempt")
+        temp=self.root
+        temp1=temp
+        while temp.data!=val:
+            print("hh") 
             
         
     
@@ -106,7 +127,7 @@ class bst:
         
 
 bst=bst()
-bst.root=node(5)
+bst.root=node(4)
 n=int(input("enter no;"))
 for i in range(n):
     val=int(input("enter:"))
