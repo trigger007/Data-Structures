@@ -54,13 +54,15 @@ class bst:
         tt1=None
         print(tt.data,temp.data,str)
         if temp2.right==None and temp2.left==None:
+            print("c1")
             del(temp2)
             if str=="right":
                 tt.right=None
             else:
                 tt.left=None
             print("element deleted")
-        elif temp2.right!=None or temp2.left!=None:
+        elif (temp2.right!=None and temp2.left==None) or (temp2.left!=None and temp2.right==None):
+            print("c2")
             if temp2.right==None:
                 if str=="right":
                     tt.right=temp2.left
@@ -74,16 +76,35 @@ class bst:
                 else:
                     tt.left=temp2.right
                 del(temp2)
+                print("element deleted")
         elif temp2.right!=None and temp2.left!=None:
+            print("c3")
             newnode=temp2.right
-            while newnode.left!=None:
-                tt1=newnode
-                newnode=newnode.left
-            tt.right=newnode
-            newnode.right=temp2.right
-            newnode.left=temp2.left
-            tt1.left=None
-            del(temp2)   
+            if newnode.right==None:
+                temp2.right==None
+                newnode.left=temp2.left
+                if str=="right":
+                    tt.right=newnode
+                else:
+                    tt.left=newnode
+                del(temp2)
+            else:
+                tt1=node(0)
+                print(temp.data,newnode.data)
+                while newnode.left!=None:
+                    tt1=newnode
+                    newnode=newnode.left
+                
+                if str=="right":
+                    tt.right=newnode
+                else:
+                    tt.left=newnode
+                
+                newnode.right=temp2.right
+                newnode.left=temp2.left
+                tt1.left=None
+                del(temp2)  
+                print("element deleted") 
 
     def dele(self,val):
         print("//2nd attempt")
