@@ -28,20 +28,23 @@ class tree:
                 temp=temp.left
     def dfs(self,v):
         l=[]
-        newnode=self.root
-        l.append(newnode)
-        while len(l)!=0:
-            if newnode.left!=None:
-                l.append(newnode.left)
-            if newnode.right!=None:
-                l.append(newnode.right)
-            if v==newnode.data:
-                print(v,"found")
-                break
-            else:
-                print(newnode.data)
-                newnode=l[-1]
-                l.remove(l[-1])
+        v=[]
+        temp=self.root
+        l.append(temp)
+        while len(l)>0:
+            temp=l[-1]
+            print("l:",temp.data)
+            if temp.left!=None and temp.left not in v:
+                l.append(temp.left)
+            elif temp.left==None or temp.left in v:
+                if temp.right!=None and temp.right not in v:
+                    l.append(temp.right)
+                elif temp.right in v or temp.right==None:
+                    v.append(l.pop())
+                    print("v:",v[-1].data)
+                    
+
+
                 
 t=tree()
 t.root=node(5)
